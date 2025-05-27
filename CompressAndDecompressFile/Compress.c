@@ -10,6 +10,7 @@ void Compress(const char *input,const char *output){
     FILE *out=fopen(output,"w");
     if(!out){
         printf("Failed to open the file");
+        fclose(in);
         return;
     }
     int curr=fgetc(in);
