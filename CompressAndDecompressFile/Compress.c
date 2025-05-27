@@ -20,8 +20,7 @@ void Compress(const char *input,const char *output){
         while((nextchar=fgetc(in))==curr && count<256){
                 count++;
         }
-        fputc(curr,out);
-        fputc(count,out);
+        fprintf (out,"%c%d",curr,count);
         curr=nextchar;
     }
     fclose(in);
