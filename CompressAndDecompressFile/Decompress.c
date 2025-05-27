@@ -23,6 +23,7 @@ void Decompress(const char *input,const char *output){
         for(int i=0;i<count;++i){
                 fputc(ch,out);
         }
+    }
         fclose(in);
         fclose(out);
         printf("Decompressed successfully");
