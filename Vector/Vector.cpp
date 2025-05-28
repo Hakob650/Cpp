@@ -87,6 +87,8 @@ int main(){
   vector.push_back(3);
   vector.push_back(4);
   vector.push_back(5);
+
+  vector.print();
   std::cout<<"size: "<<vector.get_size()<<"capacity"<<vector.get_capacity()<<"\n";  
   
   
