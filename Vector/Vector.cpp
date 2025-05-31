@@ -6,22 +6,18 @@ private:
   int *data;
 public:
   MyVector(){
-    construct();
+      data=nullptr;
+      size=0;
+      capacity=0;
   }
   ~MyVector(){
-    destruct();
+      delete[] data;
+      data=nullptr;
+      size=0;
+      capacity=0;
   }
-  void construct(){
-    data=nullptr;
-    size=0;
-    capacity=0;
-  }
-  void destruct(){
-    delete[] data;
-    data=nullptr;
-    size=0;
-    capacity=0;
-  }
+  
+  
   size_t get_size(){
     return size;
   }
