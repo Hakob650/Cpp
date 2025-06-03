@@ -9,13 +9,13 @@ private:
 	char* data_;
 	size_t size;
 public:
-	String(); // default constructor
-	String(const char* str); // parameterized constructor
-	~String(); // destructor
+	String(); 
+	String(const char* str); 
+	~String(); 
 		
-	size_t length() const; // get length of the string
-	const char* c_str() const; // access at const char*
-	void print() const; // print the string
+	size_t length() const; 
+	const char* c_str() const; 
+	void print() const; 
 };
 
 #endif
