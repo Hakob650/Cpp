@@ -1,21 +1,18 @@
 #include <iostream>
 #include "matrix.h"
 
-Matrix::Matrix() : rows_(0) , cols_(0) , data_(nullptr) {} //default constructor
+Matrix::Matrix() : rows_(0) , cols_(0) , data_(nullptr) {} 
 
-//Parameterized constructor
 Matrix::Matrix(size_t rows, size_t cols) : rows_(rows) , cols_(cols) 
 {
 	allocate_memory(rows_,cols_);
 }
 
-//Destructor
 Matrix::~Matrix()
 {
 	deallocate_memory();
 }
 
-//Allocate memory
 void Matrix::allocate_memory(size_t rows,size_t cols)
 {
 	data_ = new double*[rows];
@@ -29,7 +26,6 @@ void Matrix::allocate_memory(size_t rows,size_t cols)
 	}
 }
 
-//Deallocate_memory
 void Matrix::deallocate_memory()
 {
 	if(data_)
@@ -43,7 +39,6 @@ void Matrix::deallocate_memory()
 	}
 }
 
-//set element at position [row][col]
 void Matrix::set(size_t row, size_t col, double value)
 {
 	if(row < rows_ && col < cols_)
@@ -55,9 +50,6 @@ void Matrix::set(size_t row, size_t col, double value)
 	}
 }
 
-
-
-//get element at position [row][col]
 double Matrix::get(size_t row, size_t col) const
 {
 	if(row < rows_ && col < cols_)
