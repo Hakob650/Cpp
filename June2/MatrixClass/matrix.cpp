@@ -43,6 +43,7 @@ void Matrix::deallocate_memory()
 	}
 }
 
+//set element at position [row][col]
 void Matrix::set(size_t row, size_t col, double value)
 {
 	if(row < rows_ && col < cols_)
@@ -54,6 +55,9 @@ void Matrix::set(size_t row, size_t col, double value)
 	}
 }
 
+
+
+//get element at position [row][col]
 double Matrix::get(size_t row, size_t col) const
 {
 	if(row < rows_ && col < cols_)
@@ -63,10 +67,12 @@ double Matrix::get(size_t row, size_t col) const
 	return 0.0;
 }
 
+
 size_t Matrix::GetRows() const 
 {
 	return rows_;
 }
+
 
 size_t Matrix::GetCols() const
 {
