@@ -5,12 +5,20 @@ Matrix::Matrix() : rows_(0) , cols_(0) , data_(nullptr) {}
 
 Matrix::Matrix(size_t rows, size_t cols) : rows_(rows) , cols_(cols) 
 {
-	allocate_memory(rows_,cols_);
+	data_ = new double*[rows];
+	for(size_t i = 0; i < rows; ++i)
+	{
+		data_[i] = new double[cols] {0};
+	}
 }
 
 Matrix::~Matrix()
 {
-	deallocate_memory();
+	for(size_t i = 0; i < rows_; ++i)
+	{
+		delete[] data_[i];
+	}
+	delete[] data_;
 }
 
 void Matrix::allocate_memory(size_t rows,size_t cols)
