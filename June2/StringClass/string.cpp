@@ -29,6 +29,8 @@ String::String(const char* str)
 String::~String()
 {
 	delete[] data_;
+	data_ = nullptr;
+	size_ = 0;
 }
 
 size_t String::length() const
