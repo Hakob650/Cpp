@@ -9,11 +9,6 @@ private:
 	size_t rows_;
 	size_t cols_;
 	double** data_;
-	
-	void allocate_memory(size_t rows,size_t cols);
-	
-	void deallocate_memory();
-
 public:
 	Matrix();
 	Matrix(size_t rows,size_t cols);
