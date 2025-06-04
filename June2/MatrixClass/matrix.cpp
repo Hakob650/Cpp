@@ -8,37 +8,15 @@ Matrix::Matrix(size_t rows, size_t cols) : rows_(rows) , cols_(cols)
 	data_ = new double*[rows];
 	for(size_t i = 0; i < rows; ++i)
 	{
-		data_[i] = new double[cols] {0};
+		data_[i] = new double[cols]();
 	}
 }
 
 Matrix::~Matrix()
 {
-	for(size_t i = 0; i < rows_; ++i)
-	{
-		delete[] data_[i];
-	}
-	delete[] data_;
-}
-
-void Matrix::allocate_memory(size_t rows,size_t cols)
-{
-	data_ = new double*[rows];
-	for(size_t i = 0; i < rows; ++i)
-	{
-		data_[i] = new double[rows];
-		for(size_t j = 0 ; j < cols; ++j)
-		{
-			data_[i][j] = 0.0;
-		}
-	}
-}
-
-void Matrix::deallocate_memory()
-{
 	if(data_)
 	{
-		for(size_t i = 0 ; i < rows_; ++i)
+		for(size_t i = 0; i < rows_; ++i)
 		{
 			delete[] data_[i];
 		}
@@ -46,6 +24,7 @@ void Matrix::deallocate_memory()
 		data_ = nullptr;
 	}
 }
+
 
 void Matrix::set(size_t row, size_t col, double value)
 {
