@@ -41,7 +41,7 @@ bool BankAccount::withdraw(double amount)
 		return false;
 	}
 	balance -= amount;
-	return false;
+	return true;
 }
 
 void BankAccount::display() const
