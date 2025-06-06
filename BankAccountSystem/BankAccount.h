@@ -2,6 +2,7 @@
 #define BANK_ACCOUNT_H
 
 #include <string>
+#include <initializer_list>
 
 class BankAccount
 {
@@ -13,7 +14,7 @@ public:
 	BankAccount();
 	BankAccount(const std::string& name,int accNum,double initbal);
 	BankAccount(const BankAccount& other);
-	BankAccount(std::string name,int accNum,double initialBal);
+	BankAccount(const std::string& name,std::initializer_list<double> values);
 	~BankAccount();
 
 	void deposit(double amount);
