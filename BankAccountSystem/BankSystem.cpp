@@ -3,7 +3,7 @@
 
 BankSystem::~BankSystem()
 {
-	for(size_t i = 0; i < account.size(); ++i)
+	for(size_t i = 0; i < accounts.size(); ++i)
 	{
 		delete acc;
 	}
