@@ -3,7 +3,7 @@
 
 BankSystem::~BankSystem()
 {
-	for(BankAccount* acc : accounts)
+	for(size_t i = 0; i < account.size(); ++i)
 	{
 		delete acc;
 	}
@@ -16,7 +16,7 @@ void BankSystem::add_account(const std::string& name,int accNum,double initialBa
 
 BankAccount* BankSystem::find_account(int accNum)
 {
-	for(BankAccount* acc : accounts)
+	for(size_t i = 0; i < accounts.size(); ++i)
 	{
 		if(acc->getAccountNumber() == accNum)
 		{
