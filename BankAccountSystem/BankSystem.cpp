@@ -5,7 +5,7 @@ BankSystem::~BankSystem()
 {
 	for(size_t i = 0; i < accounts.size(); ++i)
 	{
-		delete acc;
+		delete acc[i];
 	}
 }
 void BankSystem::add_account(const std::string& name,int accNum,double initialBalance)
@@ -18,9 +18,9 @@ BankAccount* BankSystem::find_account(int accNum)
 {
 	for(size_t i = 0; i < accounts.size(); ++i)
 	{
-		if(acc->getAccountNumber() == accNum)
+		if(acc[i].getAccountNumber() == accNum)
 		{
-			return acc;	
+			return acc[i];	
 		}
 	}
 	std::cout<<"Account "<<accNum<<"not found";
@@ -45,9 +45,9 @@ void BankSystem::transfer_funds(int senderAcc,int recieverAcc,double amount)
 void BankSystem::displayAllAccounts()
 {
 	std::cout<<"All Bank Accounts"<<std::endl;
-	for(const BankAccount* acc : accounts)
+	for(size_t i = 0; i < accounts.size(); ++i)
 	{
-		acc->display();
+		acc[i].display();
 	}
 }
 
