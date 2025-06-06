@@ -15,8 +15,20 @@ BankAccount::BankAccount(const std::string& name,int accNum,double initbal)
 BankAccount::BankAccount(const BankAccount& other)
 	: accountHolder(other.accountHolder), accountNumber(other.accountNumber), balance(other.balance) {}
 
-BankAccount::BankAccount(std::string name, int number, double initialBalance,bool)
-	: accountHolder(name), accountNumber(number), balance(initialBalance) {}
+BankAccount::BankAccount(const std::string& name,std::initializer_list<double> values)
+	: accountHolder(name), accountNumber(0), balance(0.0) 
+        {
+		const double* ptr = values.begin();
+		size_t count = values.size();
+		if(count > 0)
+		{
+			accountNumber = static_cast<int>(ptr[0]);
+		}
+		if(count > 1)
+		{
+			balance = ptr[1];
+		}
+	}
 
 BankAccount::~BankAccount()
 {
