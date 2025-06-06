@@ -13,7 +13,7 @@ public:
 	BankAccount();
 	BankAccount(const std::string& name,int accNum,double initbal);
 	BankAccount(const BankAccount& other);
-	BankAccount(std::string name,int accNum,double initialBal,bool);
+	BankAccount(std::string name,int accNum,double initialBal);
 	~BankAccount();
 
 	void deposit(double amount);
