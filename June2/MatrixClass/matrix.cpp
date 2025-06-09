@@ -68,7 +68,7 @@ Matrix& Matrix::operator=(const Matrix& other)
 }
     
 
-Matrix& Matrix::operator=(Matrix&& other) noexcept
+Matrix& Matrix::operator=(Matrix&& other)
 {
     if(this != &other)
     {
