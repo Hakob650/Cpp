@@ -24,17 +24,17 @@ Matrix();
 
     Matrix& operator=(Matrix&& other) noexcept;
 
-	~Matrix();
+    ~Matrix();
 
-	void set(size_t row,size_t col,double value);
+    void set(size_t row,size_t col,double value);
 
-	double get(size_t row,size_t col) const;
+    double get(size_t row,size_t col) const;
 
-	size_t GetRows() const;
+    size_t GetRows() const;
 
-	size_t GetCols() const;
+    size_t GetCols() const;
 	
-	void print() const;
+    void print() const;
 };
 
 #endif
