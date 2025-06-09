@@ -31,9 +31,9 @@ MyVector::MyVector(MyVector&& other)
     capacity = other.capacity;
     data = other.data;
 
-    size = 0;
-    capacity = 0;
-    data = nullptr;
+    other.size = 0;
+    other.capacity = 0;
+    other.data = nullptr;
 }
 
 MyVector& MyVector::operator=(const MyVector& other)
@@ -61,9 +61,9 @@ MyVector& MyVector::operator=(MyVector&& other)
         capacity = other.capacity;
         data = other.data;
 
-        size = 0;
-        capacity = 0;
-        data = nullptr;
+        other.size = 0;
+        other.capacity = 0;
+        other.data = nullptr;
     }
     return *this;
 }
