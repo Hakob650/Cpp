@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "MinimumCommonValue.hpp"
 
 int main()
 {
