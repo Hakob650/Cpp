@@ -1,3 +1,5 @@
+#include "MinimumCommonValue.hpp"
+
 class Solution
 {
     public:
