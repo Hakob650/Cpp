@@ -1,27 +1,25 @@
-class Solution {
-public:
-    bool isIsomorphic(std::string s, std::string t) {
-        if(s.length() != t.length())
+class Solution
+{
+    public:
+        int getCommon(std::vector<int> &nums1, std::vector<int> &nums2)
         {
-            return false;
-        }
-        std::vector<int> mapS(128,0);
-        std::vector<int> mapT(128,0);
-        for(int i = 0; i < s.length(); ++i)
-        {
-             if(mapS[s[i]] || mapT[t[i]]) 
-             {
-                if(mapS[s[i]] != t[i] || mapT[t[i]] != s[i]) 
+            int i = 0, j = 0;
+            while (i < nums1.size() && j < nums2.size())
+            {
+                if (nums1[i] == nums2[j])
                 {
-                    return false;
+                    return nums1[i];
+                }
+                else if (nums1[i] < nums2[j])
+                {
+                    i++;
+                }
+                else
+                {
+                    j++;
                 }
             }
-            else 
-            {
-                mapS[s[i]] = t[i];
-                mapT[t[i]] = s[i];
-            }
+            return -1; // No common value found
         }
-        return true;
-    }
 };
+
