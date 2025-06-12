@@ -19,7 +19,7 @@ class Solution
                     j++;
                 }
             }
-            return -1; // No common value found
+            return -1; 
         }
 };
 
