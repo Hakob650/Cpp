@@ -2,7 +2,6 @@
 #define ISOMORPHIC_STRINGS_HPP
 
 #include <string>
-#include <vector>
 
 class Solution {
 public:
