@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-        int getCommon(std::vector<int> &nums1, std::vector<int> &nums2)
+        int Solution::getCommon(std::vector<int> &nums1, std::vector<int> &nums2)
         {
             int i = 0, j = 0;
             while (i < nums1.size() && j < nums2.size())
