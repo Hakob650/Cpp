@@ -264,7 +264,7 @@ MyVector& MyVector::operator-=(const int& rhs)
 {
     for(size_t i = 0; i < this->size; ++i)
     {
-        this->data[i] = rhs;
+        this->data[i] -= rhs;
     }
     return *this;
 }
