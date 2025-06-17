@@ -45,10 +45,11 @@ TaskManagementSystem/
   1. Register
   2. Login
   3. Exit
-  Enter your choice: 1
-  Enter Username: username
-  Enter password: password
-  Registration Successful!
+
+Enter your choice: 1
+Enter Username: username
+Enter password: password
+Registration Successful!
 
   Task Management System
   1. Register
