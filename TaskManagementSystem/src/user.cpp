@@ -208,7 +208,6 @@ User& User::operator=(const User& other)
         username = other.username;
         password = other.password;
 
-        // Delete existing tasks
         for (size_t i = 0; i < tasks.size(); ++i)
         {
             delete tasks[i];
