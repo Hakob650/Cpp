@@ -30,8 +30,9 @@ TaskManagementSystem/
 ```
 
 🧪 Run Tests
-bash
+``` bash
 ./test_exec
+```
 
 🚀 Run Program
 ```bash 
