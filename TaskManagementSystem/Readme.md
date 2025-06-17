@@ -58,8 +58,11 @@ Registration Successful!
   1. Register
   2. Login
   3. Exit
+  
   Enter your choice: 2
+  
   Enter username: username
+  
   Enter password: password
 
   User Menu
