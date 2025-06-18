@@ -47,10 +47,23 @@ void Task::displayTask() const
 	std::cout << "Priority: ";
 	switch (priority)
 	{
-	case LOW: std::cout << "Low"; break;
-	case MID: std::cout << "Medium"; break;
-	case HIGH: std::cout << "High"; break;
-	default: std::cout << "Unknown";
+	case LOW: 
+	{
+		std::cout << "Low"; 
+		break;
+	}
+	case MID:
+	{
+		std::cout << "Medium"; 
+		break;
+	}
+	case HIGH:
+	{
+		std::cout << "High"; 
+		break;
+	}
+	default: 
+		std::cout << "Unknown";
 	}
 	std::cout << "\nStatus: " << (completed ? "Completed" : "Pending") << "\n\n";
 }
