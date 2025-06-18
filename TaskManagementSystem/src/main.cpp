@@ -99,9 +99,13 @@ int main()
                     std::cin >> password;
 
                     if (taskmanager.registerUser(username, password))
+		    {
                         std::cout << "Registration successful!\n";
+		    }
                     else
+		    {
                         std::cout << "Username already exists.\n";
+		    }
                     break;
                 }
                 case 2:
@@ -113,9 +117,13 @@ int main()
                     std::cin >> password;
 
                     if (taskmanager.login(username, password))
+		    {
                         std::cout << "Login successful!\n";
+		    }
                     else
+		    {
                         std::cout << "Invalid username or password.\n";
+		    }
                     break;
                 }
                 case 3:
@@ -153,9 +161,13 @@ int main()
 
                     Task updatedTask = createTaskFromInput();
                     if (taskmanager.editTaskForUser(title, updatedTask))
+		    {
                         std::cout << "Task updated successfully!\n";
+		    }
                     else
+		    {
                         std::cout << "Task not found or failed to update.\n";
+		    }
                     break;
                 }
                 case 3:
@@ -166,9 +178,13 @@ int main()
                     std::getline(std::cin, title);
 
                     if (taskmanager.deleteTaskForUser(title))
+		    {
                         std::cout << "Task deleted successfully!\n";
+		    }
                     else
+		    {
                         std::cout << "Task not found or deletion failed.\n";
+		    }
                     break;
                 }
                 case 4:
@@ -202,7 +218,9 @@ int main()
 
                     std::vector<Task*> results = taskmanager.searchTasksForUser(keyword);
                     if (results.empty())
+		    {
                         std::cout << "No tasks found matching your search.\n";
+		    }
                     else
                     {
                         std::cout << "Search results:\n";
@@ -211,7 +229,7 @@ int main()
 						{
     						results[i]->displayTask();
 						}
-					}
+		    }
                     break;
                 }
                 case 7:
@@ -270,7 +288,9 @@ int main()
                     }
 
                     if (results.empty())
+		    {
                         std::cout << "No tasks found for your filter.\n";
+		    }
                     else
                     {
                         std::cout << "Filter results:\n";
@@ -293,9 +313,13 @@ int main()
     }
 
     if (taskmanager.saveToFile(filename))
+    {
         std::cout << "Data saved successfully!\n";
+    }
     else
+    {
         std::cout << "Failed to save data.\n";
+    }
 
     return 0;
 }
