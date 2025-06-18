@@ -3,7 +3,7 @@
 #include "../include/user.hpp"
 #include "../include/taskmanager.hpp"
 
-TEST(TaskTest, CreateAndGettes)
+TEST(TaskTest, CreateAndGettest)
 {
     Task task("Test","description","2025-12-31","Work",2,false);
 
