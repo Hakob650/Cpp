@@ -55,7 +55,7 @@ TEST(TaskManagerTest, UserRegistrationAndLogin)
     TaskManager manager;
 
     EXPECT_TRUE(manager.registerUser("user1", "pass1"));
-    EXPECT_FALSE(manager.registerUser("user1", "pass2")); // duplicate
+    EXPECT_FALSE(manager.registerUser("user1", "pass2")); 
 
     EXPECT_TRUE(manager.login("user1", "pass1"));
     EXPECT_FALSE(manager.login("user1", "wrongpass"));
