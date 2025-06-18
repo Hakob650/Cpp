@@ -64,7 +64,10 @@ User* TaskManager::getCurrentUser() const
 
 bool TaskManager::addTaskForUser(const Task& task)
 {
-	if (!isLoggedIn()) return false;
+	if (!isLoggedIn())
+	{
+		return false;
+	}
 
 	Task* newTask = new Task(task);
 	loggedInUser->addTask(newTask);
@@ -84,34 +87,46 @@ bool TaskManager::editTaskForUser(const std::string& title, const Task& updatedT
 void TaskManager::displayTasksForUser() const
 {
 	if (isLoggedIn())
+	{
 		loggedInUser->listTasks();
+	}
 	else
+	{
 		std::cout << "No user is logged in.\n";
+	}
 }
 
 std::vector<Task*> TaskManager::searchTasksForUser(const std::string& keyword) const
 {
 	if (isLoggedIn())
+	{
 		return loggedInUser->searchTasks(keyword);
+	}
 	return {};
 }
 
 void TaskManager::sortTasksByDeadlineForUser()
 {
 	if (isLoggedIn())
+	{
 		loggedInUser->sortTasksByDeadline();
+	}
 }
 
 void TaskManager::sortTasksByPriorityForUser()
 {
 	if (isLoggedIn())
+	{
 		loggedInUser->sortTasksByPriority();
+	}
 }
 
 void TaskManager::sortTasksByStatusForUser()
 {
 	if (isLoggedIn())
+	{
 		loggedInUser->sortTasksByStatus();
+	}
 }
 
 std::vector<Task*> TaskManager::filterTasksByCategoryForUser(const std::string& category) const
@@ -188,7 +203,7 @@ bool TaskManager::loadFromFile(const std::string& filename)
 		{
 			std::string username, taskData;
 			iss >> username;
-			std::getline(iss, taskData); // get rest of line after username
+			std::getline(iss, taskData);
 
 			User* user = findUser(username);
 			if (!user) continue;
