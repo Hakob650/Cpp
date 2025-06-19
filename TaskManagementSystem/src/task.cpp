@@ -21,7 +21,6 @@ Task::Task(Task&& other) noexcept
 	other.completed = false;
 }
 
-Task::~Task() {}
 
 void Task::markCompleted()
 {
