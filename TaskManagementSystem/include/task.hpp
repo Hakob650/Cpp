@@ -24,7 +24,7 @@ public:
          const std::string& category, int priority, bool completed = false);
     Task(const Task& other);
     Task(Task&& other) noexcept;
-    ~Task();
+    ~Task() = default;
 
    
     Task& operator=(const Task& other);
@@ -53,5 +53,5 @@ public:
     void displayTask() const;
 };
 
-#endif // TASK_HPP
+#endif 
 
