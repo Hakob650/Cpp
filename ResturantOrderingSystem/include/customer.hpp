@@ -22,3 +22,5 @@ public:
         void viewOrderHistory() const;
         std::string getName() const;
 };
+
+#endif
