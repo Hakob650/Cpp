@@ -5,7 +5,7 @@
 int main() {
     Resturant resturant;
 
-    // 👉 Add example dishes to the menu
+    
     resturant.getMenu().addDish(new Appetizer("Spring Rolls", 5.99, false));
     resturant.getMenu().addDish(new Entree("Pizza", 12.99, 800));
     resturant.getMenu().addDish(new Dessert("Ice Cream", 4.99, false));
