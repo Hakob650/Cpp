@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SYSTEMMANAGER_HPP
+#define SYSTEMMANAGER_HPP
 
 #include <vector>
 #include "Doctor.hpp"
@@ -21,3 +22,5 @@ private:
         std::vector<Doctor> doctors;
         std::vector<Patient> patients;
 };
+
+#endif
