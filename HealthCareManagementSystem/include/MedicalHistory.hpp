@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MEDICALHISTORY_HPP
+#define MEDICALHISTORY_HPP
 
 #include <string>
 
@@ -11,3 +12,5 @@ struct Medical
 
     void display() const;
 };
+
+#endif
