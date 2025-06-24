@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DOCTOR_HPP
+#define DOCTOR_HPP
 
 #include "Person.hpp"
 
@@ -12,3 +13,4 @@ private:
         int experience;
 };
 
+#endif
