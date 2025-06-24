@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERSON_HPP
+#define PERSON_HPP
 
 #include <string>
 #include "enums.hpp"
@@ -17,4 +18,6 @@ public:
             std::string getName() const;
             virtual ~Person() = default;
 };
+
+#endif
 
