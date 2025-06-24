@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATIENT_HPP
+#define PATIENT_HPP
 
 #include <vector>
 #include "Person.hpp"
@@ -17,3 +18,4 @@ private:
         std::vector<Medical> history;
 };
 
+#endif
