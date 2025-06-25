@@ -47,12 +47,14 @@ make
 ```
 
 ### Running the Program
-   Start the app:
-      bash
+   
+  Start the app:
       
-      ```
-      ./EHealthCareSystem
-      ```
+  bash
+      
+  ```
+  /EHealthCareSystem
+  ```
 
 You will see a simple menu allowing you to:
 Register doctors and patients
