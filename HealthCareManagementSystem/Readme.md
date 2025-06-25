@@ -47,8 +47,9 @@ make
 ```
 
 ### Running the Program
-  ## Start the app:
-      ```bash
+   Start the app:
+      bash
+      ```
       ./EHealthCareSystem
       ```
 
