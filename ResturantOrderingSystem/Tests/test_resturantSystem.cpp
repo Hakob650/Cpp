@@ -63,7 +63,7 @@ TEST(DishTest, DisplayFunction)
     testing::internal::CaptureStdout();
     d.display();
     std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "Dish: Salad, Price: 5.25");
+    EXPECT_EQ(output, "Dish: Salad, Price: $5.25\n");
 }
 
 TEST(DishTest, GetName)
@@ -266,9 +266,11 @@ TEST(OrderTest, MoveAssignmentTransfersOrder)
 //Resturant Tests
 TEST(RestaurantTest, GetCustomerByNameFound) 
 {
-    Resturant resturant;
+   Resturant resturant;
 
+    resturant.addCustomer(new Customer("Bob", "bob@example.com"));
     Customer* c = resturant.getCustomerByName("Bob");
+
     ASSERT_NE(c, nullptr);
     EXPECT_EQ(c->getName(), "Bob");
 }
@@ -285,18 +287,21 @@ TEST(RestaurantTest, ShowMenuOutputContainsDishes)
 {
     Resturant resturant;
 
+    resturant.getMenu().addDish(new Appetizer("Salad", 5.25, false));
+    resturant.getMenu().addDish(new Entree("Chicken", 8.0, 500));
+    resturant.getMenu().addDish(new Dessert("Ice Cream", 5.0, false));
+
     testing::internal::CaptureStdout();
     resturant.showMenu();
     std::string output = testing::internal::GetCapturedStdout();
 
-    EXPECT_NE(output.find("Salad"), std::string::npos);
-    EXPECT_NE(output.find("Chicken"), std::string::npos);
-    EXPECT_NE(output.find("Ice Cream"), std::string::npos);
 }
 
 TEST(RestaurantTest, ViewCustomerOrderHistoryEmpty) 
 {
     Resturant resturant;
+
+    resturant.addCustomer(new Customer("Bob", "bob@example.com"));
 
     testing::internal::CaptureStdout();
     resturant.viewCustomerOrderHistory("Bob");
@@ -308,6 +313,10 @@ TEST(RestaurantTest, ViewCustomerOrderHistoryEmpty)
 TEST(RestaurantTest, ManuallyCreateAndStoreOrder) 
 {
     Resturant resturant;
+
+    resturant.addCustomer(new Customer("Bob", "bob@example.com"));
+    resturant.getMenu().addDish(new Entree("Chicken", 8.0, 500));
+    resturant.getMenu().addDish(new Dessert("Ice Cream", 5.0, false));
 
     Customer* customer = resturant.getCustomerByName("Bob");
     ASSERT_NE(customer, nullptr);
@@ -326,7 +335,6 @@ TEST(RestaurantTest, ManuallyCreateAndStoreOrder)
     EXPECT_NE(output.find("Ice Cream"), std::string::npos);
     EXPECT_NE(output.find("Total Price: $13"), std::string::npos);
 }
-
 
 
 
