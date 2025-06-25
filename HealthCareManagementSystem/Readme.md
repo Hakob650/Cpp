@@ -67,41 +67,75 @@ Welcome to E-HealthCare Management System
 5. Exit
 
 Enter your choice: 1
+
 Enter Doctor Name: Dr. Anna Smith
+
 Enter Specialization: Cardiologist
+
 Enter Years of Experience: 15
+
 Enter Contact Info: anna@hospital.com
+
 Doctor registered successfully!
+
 ---
 Enter your choice: 2
+
 Enter Patient Name: John Doe
+
 Enter Date of Birth (YYYY-MM-DD): 1985-04-12
+
 Enter Gender (Male/Female): Male
+
 Enter Contact Info: john.doe@mail.com
+
 Enter Existing Medical Conditions: Hypertension
+
 Patient registered successfully!
+
 ---
+
 Enter your choice: 3
+
 Enter Patient Name: John Doe
+
 Enter Diagnosis: High blood pressure
+
 Enter Treatment: Lifestyle change, medication
+
 Enter Medication: Lisinopril
+
 Enter Date (YYYY-MM-DD): 2025-06-24
+
 Medical history added successfully!
+
 ---
+
 Enter your choice: 4
+
 Enter Patient Name: John Doe
+
 --- Medical Report ---
 Name: John Doe
+
 DOB: 1985-04-12
+
 Gender: Male
+
 Contact: john.doe@mail.com
+
 Conditions: Hypertension
+
 Medical History:
+
 Date: 2025-06-24
+
 Diagnosis: High blood pressure
+
 Treatment: Lifestyle change, medication
+
 Medication: Lisinopril
+
 Report saved as John_Doe_2025-06-24.txt
 
 Cleaning Build Files
