@@ -24,8 +24,10 @@ void Patient::generateReport() const
     std::cout << "\n=== Report for " << name << " ===\n";
     displayInfo();
     std::cout << "\nMedical History:\n";
-    for (const auto& record : history)
-        record.display();
+    for (size_t i = 0; i < history.size(); ++i)
+      {
+        history[i].display();
+      }
 }
 
 void Patient::saveReporttoFile() const 
@@ -41,7 +43,8 @@ void Patient::saveReporttoFile() const
         out << "DOB: " << dob << ", Gender: " << genderToString(gender)
             << ", Contact: " << contact << "\n";
         out << "Conditions: " << conditions << "\n\n";
-        for (const auto& record : history) {
+      for (size_t i = 0; i < history.size(); ++i) 
+      {
             out << "Date: " << record.date << "\nDiagnosis: " << record.diagnosis
                 << "\nTreatment: " << record.treatment
                 << "\nMedications: " << record.medications << "\n\n";
