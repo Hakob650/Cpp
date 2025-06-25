@@ -143,8 +143,6 @@ Cleaning Build Files
   make clean
   ```
 
-License
-  Educational use only. Contributions and forks welcome.
 
 
 
