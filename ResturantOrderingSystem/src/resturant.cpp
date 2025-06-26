@@ -33,7 +33,11 @@ Resturant& Resturant::operator=(Resturant&& other) noexcept
 
 Resturant::~Resturant()
 {
-    for(Customer* customer : customers)
+    for (size_t i = 0; i < customers.size(); ++i)
+    {
+        delete customers[i];
+    }
+
     {
         delete customer;
     }    
@@ -46,11 +50,11 @@ void Resturant::showMenu() const
 
 Customer* Resturant::getCustomerByName(const std::string& name)
 {
-    for(Customer* customer : customers)
+    for (size_t i = 0; i < customers.size(); ++i)
     {
-        if(customer->getName() == name)
+        if (customers[i]->getName() == name)
         {
-            return customer;
+        return customers[i];
         }
     }
     return nullptr;
@@ -96,15 +100,14 @@ void Resturant::placeNewOrder(const std::string& customerName)
 
 void Resturant::viewCustomerOrderHistory(const std::string& customerName) const
 {
-    for(Customer* customer : customers)
+    for (size_t i = 0; i < customers.size(); ++i)
     {
-        if(customer->getName() == customerName)
+        if (customers[i]->getName() == customerName)
         {
-            customer->viewOrderHistory();
+            customers[i]->viewOrderHistory();
             return;
         }
     }
-    std::cout << "Customer not found.\n";
 }
 
 std::vector<Customer*>& Resturant::getCustomers()
