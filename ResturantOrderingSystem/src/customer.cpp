@@ -37,9 +37,9 @@ void Customer::placeOrder(Order order)
 
 void Customer::viewOrderHistory() const
  {
-    for (const auto& order : orderHistory) 
+    for (size_t i = 0; i < orderHistory.size(); ++i)
     {
-        order.displayOrder();
+        orderHistory[i].displayOrder();
     }
 }
 
