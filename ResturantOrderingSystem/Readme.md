@@ -41,9 +41,10 @@ To clean up all generated files:
 
 ▶️ Running the Application
   After compiling, run the application:
+    
     ```bash
       ./resturant_app
-    ```
+    ``` 
     (Make sure your main.cpp defines an entry point using the Resturant class.)
 
 ✅ Running Unit Tests
