@@ -46,9 +46,10 @@ void Order::addDish(Dish* dish)
 void Order::calculateTotal() 
 {
     totalPrice = 0.0;
-    for (const Dish* dish : orderedDishes)
+    
+    for (size_t i = 0; i < orderedDishes.size(); ++i)
     {
-        totalPrice += dish->getPrice();
+        totalPrice += orderedDishes[i]->getPrice();
     }
 }
 
@@ -56,11 +57,11 @@ void Order::displayOrder() const
 {
     std::cout << "Customer: " << (customer ? customer->getName() : "Unknown") << "\n";
     std::cout << "Ordered Dishes:\n";
-    for (const Dish* dish : orderedDishes) 
+    for (size_t i = 0; i < orderedDishes.size(); ++i)
     {
-        if (dish) 
+        if (orderedDishes[i])
         {
-            dish->display();
+            orderedDishes[i]->display();
         }
     }
     std::cout << "Total Price: $" << totalPrice << "\n";
