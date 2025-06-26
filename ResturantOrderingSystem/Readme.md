@@ -45,7 +45,8 @@ To clean up all generated files:
     ```bash
       ./resturant_app
     ``` 
-    (Make sure your main.cpp defines an entry point using the Resturant class.)
+    
+Make sure your main.cpp defines an entry point using the Resturant class.
 
 ✅ Running Unit Tests
 Make sure you have Google Test installed. To build and run tests:
