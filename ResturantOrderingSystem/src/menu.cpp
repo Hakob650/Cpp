@@ -27,9 +27,9 @@ Menu& Menu::operator=(Menu&& other) noexcept
 
 Menu::~Menu() 
 {
-    for (Dish* dish : dishes) 
+    for (size_t i = 0; i < dishes.size(); ++i)
     {
-        delete dish;
+        delete dishes[i];
     }
 }
 
@@ -40,20 +40,19 @@ void Menu::addDish(Dish* dish)
 
 void Menu::displayMenu() const 
 {
-    for (const Dish* dish : dishes) 
+    for (size_t i = 0; i < dishes.size(); ++i)
     {
-        dish->display();
+        dishes[i]->display();
     }
 }
 
 Dish* Menu::getDishbyName(const std::string& dishName) const 
 {
-    for (Dish* dish : dishes) 
+  for (size_t i = 0; i < dishes.size(); ++i)
     {
-        if (dish->getName() == dishName) 
+        if (dishes[i]->getName() == dishName)
         {
-            return dish;
+            return dishes[i];
         }
     }
-    return nullptr;
 }
