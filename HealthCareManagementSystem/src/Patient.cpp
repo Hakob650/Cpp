@@ -45,9 +45,9 @@ void Patient::saveReporttoFile() const
         out << "Conditions: " << conditions << "\n\n";
       for (size_t i = 0; i < history.size(); ++i) 
       {
-            out << "Date: " << record.date << "\nDiagnosis: " << record.diagnosis
-                << "\nTreatment: " << record.treatment
-                << "\nMedications: " << record.medications << "\n\n";
+            out << "Date: " << history[i].date << "\nDiagnosis: " << record.diagnosis
+                << "\nTreatment: " << history[i].treatment
+                << "\nMedications: " <<history[i].medications << "\n\n";
         }
         out.close();
         std::cout << "Saved to: " << filename << std::endl;
