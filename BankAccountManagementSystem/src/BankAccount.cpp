@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "BankAccount.h"
+#include "../include/BankAccount.h"
 
 BankAccount::BankAccount()
 	: accountHolder("Unknown"), accountNumber(0), balance(0.0) {}
