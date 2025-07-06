@@ -47,5 +47,26 @@ int main()
         std::cerr << "MyException caught: " << exception.what() << std::endl;
     }
 
+    try
+    {
+        int result = calculator.divide(20,4);
+        std::cout << "result = " << result << std::endl;
+    }
+    catch(const MyException& exception)
+    {
+        std::cerr << "Exception caught: " << exception.what() << std::endl;
+    }
+    
+
+    try
+    {
+        int result = calculator.divide(100,2);
+        std::cout << "result = " << result << std::endl;
+    }
+    catch(const std::exception& exception)
+    {
+        std::cerr <<"MyException caught: " << exception.what() << std::endl;
+    }
+    
     return 0;
 }
