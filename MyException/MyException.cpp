@@ -1,0 +1,51 @@
+#include <iostream>
+#include <stdexcept>
+#include <string>
+
+class MyException : public std::runtime_error
+{
+public:
+        explicit MyException(const std::string& msg)
+            : std::runtime_error(msg) {}
+};
+
+
+class Calculator
+{
+public:
+        int divide(int a, int b)
+        {
+            if(b == 0)
+            {
+                throw MyException("Division by zero");
+            }
+            return a / b;
+        }
+};
+
+int main()
+{
+    Calculator calculator;
+
+    try
+    {
+        int result = calculator.divide(10, 2);
+        std::cout << "result = " << result << std::endl;
+    }
+    catch(const MyException& exception)
+    {
+        std::cerr << "Caught MyException: " << exception.what() << std::endl;
+    }
+
+    try
+    {
+        int result = calculator.divide(5, 0);
+        std::cout << "result = " << result << std::endl;
+    }
+    catch(const MyException& exception)
+    {
+        std::cerr << "MyException caught: " << exception.what() << std::endl;
+    }
+
+    return 0;
+}
