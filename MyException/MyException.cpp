@@ -2,10 +2,10 @@
 #include <stdexcept>
 #include <string>
 
-class MyException : public std::runtime_error
+class DivisionByZero : public std::runtime_error
 {
 public:
-        explicit MyException(const std::string& msg)
+        explicit DivisionByZero(const std::string& msg)
             : std::runtime_error(msg) {}
 };
 
@@ -17,7 +17,7 @@ public:
         {
             if(b == 0)
             {
-                throw MyException("Division by zero");
+                throw DivisionByZero("Division by zero");
             }
             return a / b;
         }
@@ -32,9 +32,9 @@ int main()
         int result = calculator.divide(10, 2);
         std::cout << "result = " << result << std::endl;
     }
-    catch(const MyException& exception)
+    catch(const DivisionByZero& exception)
     {
-        std::cerr << "Caught MyException: " << exception.what() << std::endl;
+        std::cerr << "Exception caught: " << exception.what() << std::endl;
     }
 
     try
@@ -42,9 +42,9 @@ int main()
         int result = calculator.divide(5, 0);
         std::cout << "result = " << result << std::endl;
     }
-    catch(const MyException& exception)
+    catch(const DivisionByZero& exception)
     {
-        std::cerr << "MyException caught: " << exception.what() << std::endl;
+        std::cerr << "Exception caught: " << exception.what() << std::endl;
     }
 
     try
@@ -52,7 +52,7 @@ int main()
         int result = calculator.divide(20,4);
         std::cout << "result = " << result << std::endl;
     }
-    catch(const MyException& exception)
+    catch(const DivisionByZero& exception)
     {
         std::cerr << "Exception caught: " << exception.what() << std::endl;
     }
