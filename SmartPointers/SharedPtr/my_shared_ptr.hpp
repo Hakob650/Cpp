@@ -12,7 +12,7 @@ public:
 
         SharedPtr(const SharedPtr& other);
 
-        SharedPtr& operator=(SharedPtr& other);
+        SharedPtr& operator=(const SharedPtr& other);
 
         ~SharedPtr();
 

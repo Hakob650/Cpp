@@ -3,7 +3,8 @@
 #include "my_shared_ptr_exceptions.hpp"
 
 SharedPtr::SharedPtr(int* p) 
-    : ptr(p), ref_count(nullptr) {}
+    : ptr(p), ref_count(p ? new int(1) : nullptr) {}
+
 
 SharedPtr::SharedPtr(const SharedPtr& other)
     : ptr(other.ptr), ref_count(other.ref_count)
@@ -14,7 +15,7 @@ SharedPtr::SharedPtr(const SharedPtr& other)
         }
     }
 
-SharedPtr& SharedPtr::operator=(SharedPtr& other)
+SharedPtr& SharedPtr::operator=(const SharedPtr& other)
 {
     if(this != &other)
     {
@@ -40,10 +41,17 @@ void SharedPtr::custom_deletor()
     if(ref_count)
     {
         --(*ref_count);
-        delete ptr;
-        delete ref_count;
+        if(*ref_count == 0)
+        {
+            delete ptr;
+            delete ref_count;
+            ptr = nullptr;
+            ref_count = nullptr;
+        }
     }
 }
+
+
 int& SharedPtr::operator*() const
 {
     if(!ptr)
