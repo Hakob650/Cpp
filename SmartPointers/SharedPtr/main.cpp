@@ -12,7 +12,7 @@ int main()
         SharedPtr p2(SharedPtr(new int(100)));
         std::cout << "*p2 = " << *p2 << std::endl;
    }
-   catch(const SharedPtrExcpetion& e)
+   catch(const SharedPtrException& e)
    {
         std::cerr << "Caught Shared Pointer Exception: " << e.what() << std::endl;
    }
@@ -22,7 +22,7 @@ int main()
      SharedPtr p2(SharedPtr(new int(100)));
     std::cout << "*p2 = " << *p2 << std::endl;
    }
-   catch(const SharedPtrExcpetion& e)
+   catch(const SharedPtrException& e)
    {
     std::cerr << "Shared Pointer Exception Caught" << e.what() << '\n';
    }

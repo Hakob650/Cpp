@@ -56,7 +56,7 @@ int& SharedPtr::operator*() const
 {
     if(!ptr)
     {
-        throw SharedPtrExcpetion("Dereferencing null pointer");
+        throw SharedPtrException("Dereferencing null pointer");
     }
     return *ptr;
 }
@@ -65,7 +65,7 @@ int* SharedPtr::operator->() const
 {
     if(!ptr)
     {
-        throw("Accessing null pointer");
+        throw SharedPtrException("Accessing null pointer");
     }
     return ptr;
 }
