@@ -36,7 +36,7 @@ SharedPtr::~SharedPtr()
 }
 
 
-void SharedPtr::custom_deletor()
+void SharedPtr::custom_deleter()
 {
     if(ref_count)
     {
