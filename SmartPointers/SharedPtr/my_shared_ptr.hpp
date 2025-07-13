@@ -9,7 +9,7 @@ class my_shared_ptr
 {
 private:
         T* ptr;
-        control_block<T> control_block;
+        control_block<T>* control_block;
 
 
     void release()
