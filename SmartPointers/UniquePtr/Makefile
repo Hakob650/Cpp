@@ -1,33 +1,39 @@
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+CXX := g++
+CXXFLAGS := -std=c++17 -Wall -Wextra -pthread -I/usr/include/gtest
+LDFLAGS := -lgtest -lgtest_main -pthread
 
-# Main application
-TARGET = unique_ptr_demo
-MAIN_SRCS = main.cpp my_unique_ptr.cpp my_unique_ptr_exceptions.cpp
-MAIN_OBJS = $(MAIN_SRCS:.cpp=.o)
+# Sources (only .cpp files)
+SRC_LIB := my_unique_ptr_exceptions.cpp
+SRC_MAIN := main.cpp $(SRC_LIB)
+SRC_TEST := test_unique_ptr.cpp $(SRC_LIB)
 
-# Test build
-TEST_TARGET = run_tests
-TEST_SRCS = test_unique_ptr.cpp my_unique_ptr.cpp my_unique_ptr_exceptions.cpp
-TEST_OBJS = $(TEST_SRCS:.cpp=.o)
-TEST_LIBS = -lgtest -lgtest_main -pthread
+# Objects
+OBJ_MAIN := $(SRC_MAIN:.cpp=.o)
+OBJ_TEST := $(SRC_TEST:.cpp=.o)
 
-all: $(TARGET)
+# Targets
+TARGET_MAIN := my_unique_ptr_demo
+TARGET_TEST := my_unique_ptr_tests
 
-$(TARGET): $(MAIN_OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+.PHONY: all clean run_demo run_tests
 
-$(TEST_TARGET): $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(TEST_LIBS)
+all: $(TARGET_MAIN) $(TARGET_TEST)
+
+$(TARGET_MAIN): $(OBJ_MAIN)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(TARGET_TEST): $(OBJ_TEST)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
-
 clean:
-	rm -f $(MAIN_OBJS) $(TEST_OBJS) $(TARGET) $(TEST_TARGET)
+	rm -f $(OBJ_MAIN) $(OBJ_TEST) $(TARGET_MAIN) $(TARGET_TEST)
 
-rebuild: clean all
+run_demo: $(TARGET_MAIN)
+	./$(TARGET_MAIN)
+
+run_tests: $(TARGET_TEST)
+	./$(TARGET_TEST)
 
