@@ -3,39 +3,40 @@
 #include <iostream>
 #include <algorithm>
 #include "control_block.hpp"
+#include "my_shared_ptr_exceptions.hpp"
 
 template <typename T>
 class my_shared_ptr
 {
 private:
         T* ptr;
-        control_block<T>* control_block;
+        control_block<T>* cb;
 
 
     void release()
     {
-        if(control_block->shared_count)
+        if(cb->shared_count)
         {
-            if(--control_block->shared_count == 0)
+            if(--cb->shared_count == 0)
             {
                 std::cout << "deleting managed object and control block" << std::endl;
 
-                delete control_block;
+                delete cb;
             }
         }
     }
 public:
         explicit my_shared_ptr(T* p = nullptr)
-            : ptr(p), control_block(p ? new control_block<T> p : nullptr) {}
+            : ptr(p), cb(p ? new control_block<T>(p) : nullptr) {}
 
         my_shared_ptr(const my_shared_ptr& other)
-            : ptr(other.ptr), control_block(other.control_block)
+            : ptr(other.ptr), cb(other.cb)
             {
-                if(control_block)
+                if(cb)
                 {
-                    ++control_block->shared_count;
+                    ++cb->shared_count;
                 }
-                std::cout << "shared ptr copied, count = " << (control_block ? control_block->shared_count : 0) << std::endl;
+                std::cout << "shared ptr copied, count = " << (cb ? cb->shared_count : 0) << std::endl;
             }
         
         my_shared_ptr& operator=(const my_shared_ptr& other)
@@ -44,11 +45,11 @@ public:
                 {
                     release();
                     ptr = other.ptr;
-                    control_block = other.control_block;
+                    cb = other.cb;
 
-                    if(control_block)
+                    if(cb)
                     {
-                        ++control_block->shared_count;
+                        ++cb->shared_count;
                     }
                 }
                 return *this;
@@ -57,11 +58,11 @@ public:
         }
 
         my_shared_ptr(my_shared_ptr&& other) noexcept
-            :ptr(other.ptr), control_block(other.control_block)
+            :ptr(other.ptr), cb(other.cb)
             {
                     other.ptr = nullptr;
                     
-                    other.control_block = nullptr;   
+                    other.cb = nullptr;   
                     
                     std::cout << "Move Constructor Called" << std::endl;
             }
@@ -74,11 +75,11 @@ public:
 
                     ptr = other.ptr;
 
-                    control_block = other.control_block;
+                    cb = other.cb;
 
                     other.ptr = nullptr;
 
-                    other.control_block = nullptr;
+                    other.cb = nullptr;
                 }
                 
                 return *this;
@@ -88,34 +89,50 @@ public:
 
             T* operator->()
             {
+                if(!ptr)
+                {
+                    throw my_shared_ptr_exception("Dereferencing null pointer");
+                }
                 return ptr;
             }
 
             const T* operator->() const
             {
+                if(!ptr)
+                {
+                    throw my_shared_ptr_exception("Dereferencing null pointer");
+                }
                 return ptr;
             }
 
             T& operator*() 
             {
+                if(!ptr)
+                {
+                    throw my_shared_ptr_exception("Accessing member of null shared pointer");
+                }
                 return *ptr;
             }
 
             const T& operator*() const
             {
+                 if(!ptr)
+                {
+                    throw my_shared_ptr_exception("Accessing member of null shared pointer");
+                }
                 return ptr;
             }
 
             int use_count() const
             {
-                return control_block ? control_block->shared_count : 0;
+                return cb ? cb->shared_count : 0;
             }
 
             void swap(my_shared_ptr& other) noexcept
             {
                 std::swap(ptr, other.ptr);
                 
-                std::swap(control_block->shared_count, other.control_block->shared_count);
+                std::swap(cb->shared_count, other.cb->shared_count);
             } 
 
             explicit operator bool() const noexcept
@@ -128,7 +145,7 @@ public:
                 return lhs.get() == nullptr;
             }
 
-            friend bool operator==(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator==(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() == nullptr;
             }
@@ -143,7 +160,7 @@ public:
                 return lhs.get() != nullptr;
             }
 
-            friend bool operator!=(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator!=(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() != nullptr;
             }
@@ -158,7 +175,7 @@ public:
                 return lhs.get() < nullptr;
             }
 
-            friend bool operator<(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator<(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() < nullptr;
             }
@@ -173,17 +190,21 @@ public:
                 return lhs.get() <= nullptr;
             }
 
-            friend bool operator<=(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator<=(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() <= nullptr;
             }
 
+            friend bool operator<=(const my_shared_ptr& lhs, const my_shared_ptr& rhs)
+            {
+                return lhs.get() <= rhs.get();
+            }
             friend bool operator>(const my_shared_ptr& lhs, std::nullptr_t)
             {
                 return lhs.get() > nullptr;
             }
 
-            friend bool operator>(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator>(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() > nullptr;
             }
@@ -198,7 +219,7 @@ public:
                 return lhs.get() >= nullptr;
             }
 
-            friend bool operator>=(const my_shared_ptr& rhs, std::nullptr_t)
+            friend bool operator>=(std::nullptr_t, const my_shared_ptr& rhs)
             {
                 return rhs.get() >= nullptr;
             }

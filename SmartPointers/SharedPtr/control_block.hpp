@@ -6,7 +6,7 @@ template <typename T>
 struct control_block
 {
     T* ptr;
-    int *shared_count;
+    int shared_count;
     int weak_count;
 
     control_block(T* p)
