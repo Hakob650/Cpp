@@ -118,17 +118,17 @@ public:
 class WindowsNotificationFactory : public NotificationFactory
 {
 public:
-    		virtual std::unique_ptr<Notification> createEmailNotification() const
+    		std::unique_ptr<Notification> createEmailNotification() const
             {
                 return std::make_unique<WindowsEmailNotification>();
             }
     		
-            virtual std::unique_ptr<Notification> createSMSNotification() const
+             std::unique_ptr<Notification> createSMSNotification() const
             {
                 return std::make_unique<WindowsSMSNotification>();
             }
     		
-            virtual std::unique_ptr<Notification> createPushNotification() const 
+             std::unique_ptr<Notification> createPushNotification() const 
             {
                 return std::make_unique<WindowsPushNotification>();
             }
@@ -139,17 +139,17 @@ public:
 class MacOsNotificationFactory : public NotificationFactory
 {
 public:
-        virtual std::unique_ptr<Notification> createEmailNotification() const
+         std::unique_ptr<Notification> createEmailNotification() const override
             {
                 return std::make_unique<MacOsEmailNotification>();
             }
     		
-            virtual std::unique_ptr<Notification> createSMSNotification() const
+             std::unique_ptr<Notification> createSMSNotification() const override
             {
                 return std::make_unique<MacOsSMSNotification>();
             }
     		
-            virtual std::unique_ptr<Notification> createPushNotification() const 
+             std::unique_ptr<Notification> createPushNotification() const override
             {
                 return std::make_unique<MacOsPushNotification>();
             }
@@ -160,17 +160,17 @@ public:
 class LinuxNotificationFactory : public NotificationFactory
 {
 public:
-        virtual std::unique_ptr<Notification> createEmailNotification() const
+         std::unique_ptr<Notification> createEmailNotification() const override
             {
                 return std::make_unique<LinuxEmailNotification>();
             }
-    		
-            virtual std::unique_ptr<Notification> createSMSNotification() const
+    	
+             std::unique_ptr<Notification> createSMSNotification() const override
             {
                 return std::make_unique<LinuxSMSNotification>();
             }
     		
-            virtual std::unique_ptr<Notification> createPushNotification() const 
+             std::unique_ptr<Notification> createPushNotification() const override
             {
                 return std::make_unique<LinuxPushNotification>();
             }
