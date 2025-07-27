@@ -6,7 +6,6 @@ CXXFLAGS := -std=c++17 -Wall -Wextra -Iinclude
 SRC_DIR := src
 INC_DIR := include
 OBJ_DIR := obj
-TEST_DIR := tests
 
 # Output names
 TARGET := message_transformer
@@ -18,10 +17,6 @@ OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Main file
 MAIN := main.cpp
-
-# GTest config (using static libraries)
-GTEST_FLAGS := /usr/lib/libgtest.a /usr/lib/libgtest_main.a -pthread
-TEST_SRC := $(wildcard $(TEST_DIR)/*.cpp)
 
 # Default build target
 all: $(TARGET)
@@ -38,16 +33,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# ---------- Google Test ----------
-test: $(TEST_BIN)
-	./$(TEST_BIN)
-
-$(TEST_BIN): $(TEST_SRC) $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(GTEST_FLAGS)
-
 # Clean all builds
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET) $(TEST_BIN)
+	rm -rf $(OBJ_DIR) $(TARGET)
 
 # Run program
 run: all
