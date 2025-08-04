@@ -18,7 +18,7 @@ MultiDimMatrix<T, N>::MultiDimMatrix(const std::array<std::size_t, N>& dimension
 template <typename T, std::size_t N>
 typename ::MultiDimMatrix<T, N - 1>& MultiDimMatrix<T, N>::operator[](size_type index)
 {
-    if(index >= dim[0])
+    if(index >= dim[N - 1])
     {
         throw std::out_of_range("Index out of range");
         
@@ -29,7 +29,7 @@ typename ::MultiDimMatrix<T, N - 1>& MultiDimMatrix<T, N>::operator[](size_type 
 template <typename T, std::size_t N>
 const typename ::MultiDimMatrix<T, N - 1>& MultiDimMatrix<T, N>::operator[](size_type index) const 
 {
-    if(index >= dim[0])
+    if(index >= dim[N - 1])
     {
         throw std::out_of_range("Index out of range");
     }

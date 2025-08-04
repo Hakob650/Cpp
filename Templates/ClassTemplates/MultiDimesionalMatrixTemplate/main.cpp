@@ -24,11 +24,15 @@ int main()
     std::cout << "Max: " << mat2d.max() << std::endl;
     std::cout << "Sum: " << mat2d.sum() << std::endl;
 
-    MultiDimMatrix<int, 3> mat3d({2, 2, 2}, 3);
+    MultiDimMatrix<int, 3> mat3d({3, 3, 3}, 10);
     mat3d[1][1][1] = 10;
+    mat3d[1][0][1] = 20;
+    mat3d[0][0][0] = 30;
     std::cout << "mat3d[1][1][1] = " << mat3d[1][1][1] << std::endl;
     std::cout << "3D Matrix: " << std::endl;
     std::cout << mat3d << std::endl;
-
+    std::cout << "Min = " << mat3d.min() << std::endl;
+    std::cout << "Max = " << mat3d.max() << std::endl;
+    std::cout << "Sum = " << mat3d.sum() << std::endl;
     return 0;
 }
