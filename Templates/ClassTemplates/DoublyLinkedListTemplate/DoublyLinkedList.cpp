@@ -83,7 +83,7 @@ template <typename T>
 void DoublyLinkedList<T>::push_front(const T& value)
 {
     Node* node = new Node(value, nullptr, head);
-    {
+    if(head) {
         head->prev = node;
     }
     else
